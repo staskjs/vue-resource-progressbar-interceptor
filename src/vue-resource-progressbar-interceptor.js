@@ -2,7 +2,7 @@
 // Interceptor that adds progressbar to all requests
 //
 
-const VueResourceCaseConverter = {
+const VueResourceProgressBarInterceptor = {
   install: (Vue, options = {}) => {
 
     const progress = Vue.prototype.$Progress;
