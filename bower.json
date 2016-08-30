@@ -1,0 +1,23 @@
+{
+  "name": "vue-resource-progressbar-interceptor",
+  "description": "Interceptor that ties a progressbar to all requests, that it is clear that something is loading",
+  "main": "dist/vue-resource-progressbar-interceptor.es5.js",
+  "authors": [
+    "Stas Karpov"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "vue",
+    "vue-resource",
+    "progressbar",
+    "interceptor"
+  ],
+  "homepage": "https://github.com/staskjs/vue-resource-progressbar-interceptor",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
