@@ -6,7 +6,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 // Interceptor that adds progressbar to all requests
 //
 
-var VueResourceCaseConverter = {
+var VueResourceProgressBarInterceptor = {
   install: function install(Vue) {
     var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
