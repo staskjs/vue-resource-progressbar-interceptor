@@ -22,6 +22,7 @@ var VueResourceProgressBarInterceptor = {
     var requestsCompleted = 0;
 
     var latencyThreshold = options.latencyThreshold || 100;
+    var responseLatency = options.responseLatency || 50;
 
     function setComplete() {
       requestsTotal = 0;
@@ -55,12 +56,13 @@ var VueResourceProgressBarInterceptor = {
           return response;
         }
 
-        if (!response.ok) {
-          progress.fail();
-          setComplete();
-        }
-        // Finish progress bar 50 ms later
+        // Finish progress bar some time later
         setTimeout(function () {
+          if (!response.ok) {
+            progress.fail();
+            setComplete();
+          }
+
           requestsCompleted++;
 
           if (requestsCompleted >= requestsTotal) {
@@ -69,7 +71,7 @@ var VueResourceProgressBarInterceptor = {
             completed = requestsCompleted / requestsTotal * 100 - 10;
             progress.set(completed);
           }
-        }, latencyThreshold + 50);
+        }, latencyThreshold + responseLatency);
         return response;
       });
     });

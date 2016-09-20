@@ -33,6 +33,8 @@ Configuration options:
 
     Vue.use(VueResourceProgressBarInterceptor, {
       latencyThreshold: 100, // Number of ms before progressbar starts showing, 100 is default
+      responseLatency: 50, // Number of ms before progressbar starts reacting to response, 50 is default
+                           // Can be used to wait for more requests to kick in under single progress bar
     });
 
 ## Notes
