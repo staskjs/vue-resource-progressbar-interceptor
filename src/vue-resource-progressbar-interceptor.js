@@ -16,8 +16,8 @@ const VueResourceProgressBarInterceptor = {
     let requestsTotal = 0;
     let requestsCompleted = 0;
 
-    const latencyThreshold = options.latencyThreshold || 100;
-    const responseLatency = options.responseLatency || 50;
+    const latencyThreshold = options.latencyThreshold != null ? options.latencyThreshold : 100;
+    const responseLatency = options.responseLatency != null ? options.responseLatency : 50;
 
     function setComplete() {
       requestsTotal = 0;
@@ -37,13 +37,23 @@ const VueResourceProgressBarInterceptor = {
 
       if (showProgressBar) {
         if (requestsTotal === 0) {
-          setTimeout(() => {
+          if (latencyThreshold === 0) {
             progress.start();
-          }, latencyThreshold);
+          }
+          else {
+            setTimeout(() => {
+              // If not all requests finished during latency time, then start progressbar
+              if (requestsTotal !== requestsCompleted) {
+                progress.start();
+              }
+            }, latencyThreshold);
+          }
         }
         requestsTotal++;
-        completed = (requestsCompleted / requestsTotal) * 100;
-        progress.set(completed);
+        if (progress.$vm.RADON_LOADING_BAR.options.show) {
+          completed = (requestsCompleted / requestsTotal) * 100 + 1;
+          progress.set(completed);
+        }
       }
 
       next((response) => {
@@ -67,7 +77,7 @@ const VueResourceProgressBarInterceptor = {
             completed = ((requestsCompleted / requestsTotal) * 100) - 10;
             progress.set(completed);
           }
-        }, latencyThreshold + responseLatency);
+        }, responseLatency);
         return response;
       });
     });
