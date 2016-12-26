@@ -1,6 +1,6 @@
 {
   "name": "vue-resource-progressbar-interceptor",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Interceptor that ties a progressbar to all requests, that it is clear that something is loading",
   "main": "dist/vue-resource-progressbar-interceptor.es5.js",
   "scripts": {
@@ -23,6 +23,9 @@
   },
   "homepage": "https://github.com/staskjs/vue-resource-progressbar-interceptor#readme",
   "dependencies": {},
+  "peerDependencies": {
+    "vue-progressbar": "^0.7.0"
+  },
   "devDependencies": {
     "babel-preset-es2015": "^6.13.2",
     "gulp": "^3.9.1",
