@@ -38,6 +38,21 @@ var VueResourceProgressBarInterceptor = {
         delete request.showProgressBar;
       }
 
+      if (request.show_progress_bar != null) {
+        showProgressBar = request.show_progress_bar;
+        delete request.show_progress_bar;
+      }
+
+      if (request.params.showProgressBar != null) {
+        showProgressBar = request.params.showProgressBar;
+        delete request.params.showProgressBar;
+      }
+
+      if (request.params.show_progress_bar != null) {
+        showProgressBar = request.params.show_progress_bar;
+        delete request.params.show_progress_bar;
+      }
+
       var completed = void 0;
 
       if (showProgressBar) {
