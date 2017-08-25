@@ -78,7 +78,7 @@ const VueResourceProgressBarInterceptor = {
 
         // Finish progress bar some time later
         setTimeout(() => {
-          if (!response.ok) {
+          if (!response || !response.ok) {
             progress.fail();
             setComplete();
           }
