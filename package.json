@@ -1,6 +1,6 @@
 {
   "name": "vue-resource-progressbar-interceptor",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "Interceptor that ties a progressbar to all requests, that it is clear that something is loading",
   "main": "dist/vue-resource-progressbar-interceptor.es5.js",
   "scripts": {
